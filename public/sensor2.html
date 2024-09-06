@@ -1,0 +1,109 @@
+﻿<!DOCTYPE html>
+
+<html lang="es" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>MEI IOT</title>
+    <link href="styles.css" rel="stylesheet">
+    <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
+    <script src="/socket.io/socket.io.js"></script>
+    <script defer src="script_s2.js" type="text/javascript"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+</head>
+<body onclick="defaultevent()">
+    <header class="main-header">
+        <a href="https://mei.es/"><img class="lafoto" src="images/logo-mei-blanco-1.png"></a>
+        <label for="btn-nav" class="btn-nav">
+            <i class="fas fa-bars">
+                <img src="images/menu_ico.png">
+            </i>
+        </label>
+        <input type="checkbox" id="btn-nav">
+        <nav>
+            <ul class="navigation">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="sensor1.html"><div id="nav1">Sensor 1</div></a></li>
+                <li><a href="sensor2.html"><div id="nav2">Sensor 2</div></a></li>
+                <li><a href="sensor3.html"><div id="nav3">Sensor 3</div></a></li>
+                <li><a href="configuracion.html">Configuración</a></li>
+            </ul>
+        </nav>
+    </header>
+
+
+
+    <div class="row">
+        <div class="column">
+            <div class="barborder">
+                <div class="bar" id="sensor1"></div>
+                <div class="barlim" id="barlim11"></div>
+                <div class="barlim" id="barlim12"></div>
+                <div class="barlim" id="barlim21"></div>
+                <div class="barlim" id="barlim22"></div>
+                <div class="barlim" id="barlim31"></div>
+                <div class="barlim" id="barlim32"></div>
+            </div>
+            <div class="mvalue" id="sensor1value"></div>
+            <div class="dvalue" id="sensor1maxvalue"></div>
+            <div class="dvalue" id="sensor1minvalue"></div>
+            <input type="range" id="sliderbar" max="1000" />
+            <input type="range" id="sliderbarb" max="1000" />
+        </div>
+
+        <div class="column" type="wide">
+            <div class="title">
+                <input type="text" id="texts1" value="" readonly="readonly" />
+                <img src="/images/edit.png" alt="editar" style="position: relative; top: 5px; width: 30px; height: 30px; cursor: pointer; display: inline-block" onclick="editar()" />
+            </div>
+            <form id="form">
+                <label for="max1">Rango de </label>
+                <label id="textunitat" for="max1"></label>
+                <select name="max11" type="select" id="max11">
+                    <option value="10">0...10</option>
+                    <option value="100">0...100</option>
+                    <option value="2060">-20...+60</option>
+                </select>
+            </form>
+            <select name="unit1" type="select" id="unit1">
+                <option value="bar">bar</option>
+                <option value="grausc">ºC</option>
+                <option value="mh2o">mH2O</option>
+            </select>
+            <div>
+                Contactos:
+                <select name="contact1" type="select" id="contact1">
+                    <option value="sin" title="Sin contactos">-</option>
+                    <option value="NA" title="El contacto cierra al subir la presión/temperatura">NA</option>
+                    <option value="NC" title="El contacto abre al subir la presión/temperatura">NC</option>
+                    <option value="VNA" title="El contacto cierra dentro de la ventana de presión/temperatura">VNA</option>
+                    <option value="VNC" title="El contacto abre dentro de la ventana de presión/temperatura">VNC</option>
+                    <option value="NAH" title="El contacto cierra al subir la presión/temperatura y abre al bajar del punto de histéresis">NAH</option>
+                    <option value="NCH" title="El contacto cierra al subir la presión/temperatura y cierra al bajar del punto de histéresis">NCH</option>
+                </select>
+            </div>
+            <div id="form2" style="padding-top: 20px;">
+                <label id="textunitat2" for="lim1"></label>
+                <label id="superior" for="lim1"></label>
+                <label type="text" id="lim1" name="lim1"></label>
+                <label id="unitat2" for="lim1"></label>
+            </div>
+            <div id="form3">
+                <label id="textunitat3" for="lim12"></label>
+                <label id="inferior" for="lim1"></label>
+                <label type="text" id="lim12" name="lim12"></label>
+                <label id="unitat3" for="lim12"></label>
+            </div>
+            <div>
+                <a class="download" onclick="zero()" id="ddb" href="#" title="Puesta a zero">Zero</a>
+                <a class="download" onclick="span()" id="ddb" href="#" title="Calibración del span">Span</a>
+                <a class="download" onclick="calfab()" id="ddb" href="#" title="Resetear a valores de fábrica">Fábrica</a>
+            </div>
+        </div>
+        <div class="column">
+            <canvas id="myChart" width="500" height="400"></canvas>
+        </div>
+    </div>
+</body>
+</html>

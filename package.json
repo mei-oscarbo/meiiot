@@ -1,0 +1,25 @@
+{
+  "name": "piserver",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "dev": "nodemon server.js",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt": "^5.1.1",
+    "bcryptjs": "^2.4.3",
+    "express": "^4.18.2",
+    "ip": "^1.1.8",
+    "node-cache": "^5.1.2",
+    "onoff": "^6.0.3",
+    "serialport": "^9.0.1",
+    "socket.io": "4.7.2",
+    "xmlhttprequest": "^1.4.0"
+  }
+}
