@@ -123,17 +123,32 @@ const parser = new parsers.Readline({
 });
 
 //dev/ttyUSB0
-var ardport = new SerialPort('COM4', {
+/*var ardport = new SerialPort('COM4', {
     baudRate: 9600,
     dataBits: 8,
     parity: 'none',
     stopBits: 1,
     flowControl: false
-}, function (err) {if (err) throw err });
+}, function (err) {if (err) throw err });*/
 
-ardport.pipe(parser, function (err) { if (err) throw err });
+//ardport.pipe(parser, function (err) { if (err) throw err });
 
 const port = 3000
+
+setInterval(function () {
+    s[1].value = 164
+    s[2].value = 500
+    s[3].value = 1023
+
+
+if (3 != null) {
+    var fech = new Date();
+    ledstat = ledstatus()
+    if (fech.getSeconds() != sec && (fech.getSeconds() % 2) == 0 && datarecord == 1) {
+        sec = addcsvline(s[1].value, s[2].value, s[3].value)
+    }
+}
+}, 500)
 
 parser.on('data', function (data, socket) {
     var dataarray = data.split(',').map(function (item) {
