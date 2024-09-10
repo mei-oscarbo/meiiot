@@ -86,6 +86,7 @@ r[2] = new relay(0, 0, 0, 0)
 r[3] = new relay(0, 0, 0, 0)
 
 socket.on("datafunc", function (data) {
+    console.log(data)
     shutdown = false
     dataJSON = data
     s[1].value = dataJSON.sensor1
