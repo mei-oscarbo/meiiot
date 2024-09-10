@@ -286,7 +286,7 @@ io.on("connection", function (socket) {
     }, 1000)
     socket.on("HOLA", function (data) {
 	    console.log(data)
-    }
+    })
     socket.on("clientmessage", function (data) {
 	    console.log(data)
         io.sockets.emit("client", data)
