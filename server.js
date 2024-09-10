@@ -109,136 +109,11 @@ s[3] = new sensor(JSONstoreddata.sens, JSONstoreddata.unit, JSONstoreddata.max, 
 
 sec = 0
 
-
-
-//const offbut = new Gpio(18, "in")
-//const led1 = new Gpio(17, "out")
-//const led2 = new Gpio(27, "out")
-//const led3 = new Gpio(22, "out")
-//const leds = ["dummy", led1, led2, led3]
-//const serverled = new Gpio(23, "out")
-
 const parser = new parsers.Readline({
     delimiter: '\r\n'
 });
 
-//dev/ttyUSB0
-/*var ardport = new SerialPort('COM4', {
-    baudRate: 9600,
-    dataBits: 8,
-    parity: 'none',
-    stopBits: 1,
-    flowControl: false
-}, function (err) {if (err) throw err });*/
-
-//ardport.pipe(parser, function (err) { if (err) throw err });
-
 const port = 3000
-
-setInterval(function () {
-    s[1].value = 164
-    s[2].value = 500
-    s[3].value = 1023
-
-
-if (3 != null) {
-    var fech = new Date();
-    ledstat = ledstatus()
-    if (fech.getSeconds() != sec && (fech.getSeconds() % 2) == 0 && datarecord == 1) {
-        //sec = addcsvline(s[1].value, s[2].value, s[3].value)
-    }
-}
-}, 500)
-
-parser.on('data', function (data, socket) {
-    var dataarray = data.split(',').map(function (item) {
-        return parseInt(item, 10);
-    });
-
-    try {
-        arduJSONdata = createAverageCalculator(dataarray)
-        if (arduJSONdata != null) {
-            datapayload = arduJSONdata
-        }
-        s[1].value = arduJSONdata.sensor1
-        s[2].value = arduJSONdata.sensor2
-        s[3].value = arduJSONdata.sensor3
-    }
-
-    catch (err) { }
-    
-
-    if (arduJSONdata != null) {
-        var fech = new Date();
-        ledstat = ledstatus()
-        if (fech.getSeconds() != sec && (fech.getSeconds() % 2) == 0 && datarecord == 1) {
-            sec = addcsvline(arduJSONdata.sensor1, arduJSONdata.sensor2, arduJSONdata.sensor3)
-        }
-    }
-});
-
-function createAverageCalculator(input) {
-
-    values.sensor1.push(input[0]);
-    values.sensor2.push(input[1]);
-    values.sensor3.push(input[2]);
-
-    callCount++;
-
-    if (callCount >= 50) {
-
-        s1val = values.sensor1.reduce((sum, val) => sum + val, 0) / callCount
-        s2val = values.sensor2.reduce((sum, val) => sum + val, 0) / callCount
-        s3val = values.sensor3.reduce((sum, val) => sum + val, 0) / callCount
-
-        if (Number.isNaN(s1val)) {
-            s1val = an2
-        }
-
-        if (Number.isNaN(s2val)) {
-            s1val = bn2
-        }
-
-        if (Number.isNaN(s3val)) {
-            s1val = cn2
-        }
-
-        if (s1val <= 940 && s1val >= 20) { s1val = s1val * 0.5 + an1 * 0.25 + an2 * 0.15 + an3 * 0.1 }
-        if (s2val <= 940 && s2val >= 20) { s2val = s2val * 0.5 + bn1 * 0.25 + bn2 * 0.15 + bn3 * 0.1 }
-        if (s3val <= 940 && s3val >= 20) { s3val = s3val * 0.5 + cn1 * 0.25 + cn2 * 0.15 + cn3 * 0.1 }
-
-        const average = {
-            sensor1: s1val,
-            sensor2: s2val,
-            sensor3: s3val
-        };       
-
-        an3 = an2
-        an2 = an1
-        an1 = average.sensor1
-        bn3 = bn2
-        bn2 = bn1
-        bn1 = average.sensor2
-        cn3 = cn2
-        cn2 = cn1
-        cn1 = average.sensor3
-
-        console.log(average)
-
-        callCount = 0;
-        values = {
-            sensor1: [],
-            sensor2: [],
-            sensor3: []
-        };
-
-        send = true
-
-        return average;
-    }
-
-    return null;
-}
 
 app.use((req, res)=>{
     res.status(404)
@@ -276,16 +151,16 @@ io.on("connection", function (socket) {
     storageddata = fs.readdirSync("./public/data/")
     socket.emit("startdata", storageddata)
     setInterval(function () {
-        socket.emit("datafunc", datapayload)
-    }, 500)
-    setInterval(function () {
         socket.emit("relaystatus", ledstat)
     }, 1000)
-    setInterval(function () {
-        socket.emit("updatestatus", updateneeded)
-    }, 1000)
-    socket.on("HOLA", function (data) {
+    socket.on("pidata", function (data) {
 	    console.log(data)
+	    dataJSON = data
+    	    s[1].value = dataJSON.sensor1
+	    s[2].value = dataJSON.sensor2
+	    s[3].value = dataJSON.sensor3
+	    socket.emit("datafunc", data)
+	    ledstat = ledstatus()
     })
     socket.on("clientmessage", function (data) {
 	    console.log(data)
