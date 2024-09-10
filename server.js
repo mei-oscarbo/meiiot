@@ -155,12 +155,14 @@ io.on("connection", function (socket) {
     }, 1000)
     socket.on("pidata", function (data) {
 	    console.log(data)
-	    dataJSON = data
-    	    s[1].value = dataJSON.sensor1
-	    s[2].value = dataJSON.sensor2
-	    s[3].value = dataJSON.sensor3
-	    socket.emit("datafunc", data)
-	    ledstat = ledstatus()
+	    if(data != null){
+		    dataJSON = data
+	    	    s[1].value = dataJSON.sensor1
+		    s[2].value = dataJSON.sensor2
+		    s[3].value = dataJSON.sensor3
+		    socket.emit("datafunc", data)
+		    ledstat = ledstatus()
+	    }
     })
     socket.on("clientmessage", function (data) {
 	    console.log(data)
