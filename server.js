@@ -145,7 +145,7 @@ if (3 != null) {
     var fech = new Date();
     ledstat = ledstatus()
     if (fech.getSeconds() != sec && (fech.getSeconds() % 2) == 0 && datarecord == 1) {
-        sec = addcsvline(s[1].value, s[2].value, s[3].value)
+        //sec = addcsvline(s[1].value, s[2].value, s[3].value)
     }
 }
 }, 500)
