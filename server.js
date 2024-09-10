@@ -284,6 +284,9 @@ io.on("connection", function (socket) {
     setInterval(function () {
         socket.emit("updatestatus", updateneeded)
     }, 1000)
+    socket.on("HOLA", function (data) {
+	    console.log(data)
+    }
     socket.on("clientmessage", function (data) {
 	    console.log(data)
         io.sockets.emit("client", data)
