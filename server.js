@@ -185,30 +185,23 @@ io.on("connection", function (socket) {
         }
         if (JSONdata.sens == "1") {
             fs.writeFileSync("./storage1.json", tostorage)
-            console.log("AAAAAAAAA")
         }
         else if (JSONdata.sens == "2") {
             fs.writeFileSync("./storage2.json", tostorage)
-            console.log("AAAAAAAAA")
         }
         else if (JSONdata.sens == "3") {
             fs.writeFileSync("./storage3.json", tostorage)
-            console.log("AAAAAAAAA")
         }
         else if (JSONdata.rele == "1") {
             fs.writeFileSync("./r1.json", tostorage)
-            console.log("AAAAAAAAA")
         }
         else if (JSONdata.rele == "2") {
             fs.writeFileSync("./r2.json", tostorage)
-            console.log("AAAAAAAAA")
         }
         else if (JSONdata.rele == "3") {
             fs.writeFileSync("./r3.json", tostorage)
-            console.log("AAAAAAAAA")
         }
         else {
-            console.log("AAAAAAAAA")
             fs.writeFileSync("./storage.json", tostorage)
             datarecord = JSONdata.datadownload
             r1s = JSONdata.r1s
