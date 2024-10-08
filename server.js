@@ -153,9 +153,9 @@ io.on("connection", function (socket) {
     setInterval(function () {
         socket.emit("relaystatus", ledstat)
     }, 1000)
-    setInterval(function () {
+    /*setInterval(function () {
         socket.emit("datafunc", dataJSON)
-    }, 1000)
+    }, 1000)*/
     socket.on("pidata", function (data) {
 	    if(data != null){
 		    dataJSON = data
