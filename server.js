@@ -159,7 +159,6 @@ io.on("connection", function (socket) {
 	}
     }, 1000)
     socket.on("pidata", function (data) {
-	    console.log(data)
 	    if(data != null){
 		    dataJSON = data
 	    	    s[1].value = dataJSON.sensor1
