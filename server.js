@@ -166,6 +166,10 @@ io.on("connection", function (socket) {
 		    ledstat = ledstatus()
 	    }
     })
+
+    socket.on("storedfiles", function (data) {
+	     io.sockets.emit("startdata", data)
+    })
     socket.on("clientmessage", function (data) {
 	    console.log(data)
         io.sockets.emit("client", data)
