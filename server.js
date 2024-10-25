@@ -14,7 +14,6 @@ const fs = require("fs")
 var SerialPort = require('serialport');
 const { Z_ASCII } = require("zlib");
 const parsers = SerialPort.parsers;
-var arduJSONdata = null
 var datapayload = null
 var ledstat = "as"
 var led1pre = "a"
@@ -126,7 +125,7 @@ app.on("/", (req, res) => {
 
 io.on("connection", function (socket) {
     console.log("Conexion por socket")
-    socket.emit("datafunc", arduJSONdata)
+	io.sockets.emit("request", data)
     storageddata = fs.readFileSync("./storage.json")
     JSONstoreddata = JSON.parse(storageddata)
     socket.emit("startdatac", JSONstoreddata)
