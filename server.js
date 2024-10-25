@@ -19,6 +19,7 @@ var ledstat = "as"
 var led1pre = "a"
 var led2pre = "a"
 var led3pre = "a"
+var dataJSON = null;
 
 let callCount = 0;
 let values = {
