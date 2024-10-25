@@ -125,7 +125,7 @@ app.on("/", (req, res) => {
 
 io.on("connection", function (socket) {
     console.log("Conexion por socket")
-	io.sockets.emit("request", data)
+	io.sockets.emit("request", "A")
     storageddata = fs.readFileSync("./storage.json")
     JSONstoreddata = JSON.parse(storageddata)
     socket.emit("startdatac", JSONstoreddata)
