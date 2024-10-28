@@ -160,6 +160,10 @@ io.on("connection", function (socket) {
 	if(dataJSON != null){
 		socket.emit("datafunc", dataJSON)
 	}
+	if(isready == 1){
+		socket.emit("isreadytodownload", filename)
+		isready = 0
+	}
     }, 1000)
     socket.on("pidata", function (data) {
 	    if(data != null){
@@ -175,7 +179,7 @@ io.on("connection", function (socket) {
 	    console.log(filename +" DOWNLOADED")
     })
     socket.on("isready", function(data){
-	    socket.emit("isreadytodownload", data)
+	    isready = 1
     })
 
     socket.on("storedfiles", function (data) {
