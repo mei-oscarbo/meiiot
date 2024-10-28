@@ -221,7 +221,7 @@ io.on("connection", function (socket) {
 
     socket.on("download", function (data) {
 	console.log("requesting "+data+" file")
-	socket.emit("download", data)
+	io.sockets.emit("download", data)
     })
 	ss(socket).on('file', function(stream) {
 	console.log("RECIEVING FILE")
