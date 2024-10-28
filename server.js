@@ -171,7 +171,8 @@ io.on("connection", function (socket) {
 	    }
     })
     socket.on("file", function(data){
-	    console.log(data)
+	    fs.writeFileSync("./public/files/testdata.csv", data)
+	    console.log("DATA DOWNLOADED")
     })
 
     socket.on("storedfiles", function (data) {
