@@ -221,12 +221,9 @@ io.on("connection", function (socket) {
 
     socket.on("download", function (data) {
 	console.log("requesting "+data+" file")
-	io.sockets.emit("download", data)
+	ss(io.sockets).emit('file', stream);
+	stream.pipe(fs.createWriteStream('file.csv'));
     })
-	ss(socket).on('file', function(stream) {
-	console.log("RECIEVING FILE")
-	  fs.createReadStream('./public/files/test.csv').pipe(stream);
-	});
     socket.on("poff", function () {
         console.log("APAGALOOOOOO")
         //exec("sh shutdown.sh")
