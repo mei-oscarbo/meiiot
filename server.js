@@ -7,9 +7,12 @@ const server = require("http").Server(app)
 const io = require("socket.io")(server)
 var ip = require("ip");
 const fs = require("fs")
+var ss = require('socket.io-stream');
 //const exec = require("child_process").exec
 
 //console.dir(ip.address('Wi-Fi'));
+
+var stream = ss.createStream();
 
 var SerialPort = require('serialport');
 const { Z_ASCII } = require("zlib");
