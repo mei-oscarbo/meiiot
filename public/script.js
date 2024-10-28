@@ -307,7 +307,7 @@ function setcolor(ledstat, barralim1, barralim2) {
 
 function datadownloads() {
     socket.emit("download", datadownload.value)
-    ddb.href = "/files/" + datadownload.value
+    //ddb.href = "/files/" + datadownload.value
 }
 
 socket.on("updatestatus", function (data) {
