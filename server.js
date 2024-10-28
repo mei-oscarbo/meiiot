@@ -222,9 +222,9 @@ io.on("connection", function (socket) {
     socket.on("download", function (data) {
 	console.log("requesting "+data+" file")
 	ss(io.sockets).emit('file', stream);
-	stream.pipe(fs.createWriteStream('./public/files/testdata.csv'));
+	stream.pipe(text);
 	//localfile = fs.readFileSync('./file.csv', 'utf-8');
-	//fs.writeFileSync("./public/files/testdata.csv", localfile)
+	fs.writeFileSync("./public/files/testdata.csv", text)
     })
     socket.on("poff", function () {
         console.log("APAGALOOOOOO")
