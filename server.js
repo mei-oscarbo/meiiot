@@ -175,7 +175,7 @@ io.on("connection", function (socket) {
 	    console.log(filename +" DOWNLOADED")
     })
     socket.on("isready", function(data){
-	    socket.emit("isready", data)
+	    socket.emit("isreadytodownload", data)
     })
 
     socket.on("storedfiles", function (data) {
