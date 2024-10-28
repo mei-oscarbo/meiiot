@@ -171,8 +171,8 @@ io.on("connection", function (socket) {
 	    }
     })
     socket.on("file", function(data){
-	    fs.writeFileSync("./public/files/testdata.csv", data)
-	    console.log("DATA DOWNLOADED")
+	    fs.writeFileSync("./public/files/"+filename, data)
+	    console.log(filename +" DOWNLOADED")
     })
     socket.on("isready", function(data){
 	    socket.emit("isready", data)
@@ -229,6 +229,7 @@ io.on("connection", function (socket) {
     socket.on("download", function (data) {
 	console.log("requesting "+data+" file")
 	io.sockets.emit('download', data);
+	filename = data;
     })
     socket.on("poff", function () {
         console.log("APAGALOOOOOO")
