@@ -311,7 +311,7 @@ function datadownloads() {
 
 socket.on("isready", function (data) {
     console.log("DOWNLOADING "+ data)
-    ddb.href = "/files/" + data
+    window.location.replace("./files/" + data); 
 })
 
 socket.on("updatestatus", function (data) {
