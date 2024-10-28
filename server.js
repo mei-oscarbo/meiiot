@@ -174,6 +174,9 @@ io.on("connection", function (socket) {
 	    fs.writeFileSync("./public/files/testdata.csv", data)
 	    console.log("DATA DOWNLOADED")
     })
+    socket.on("isready", function(data){
+	    socket.emit("isready", data)
+    })
 
     socket.on("storedfiles", function (data) {
 	     io.sockets.emit("startdata", data)
