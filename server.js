@@ -223,6 +223,8 @@ io.on("connection", function (socket) {
 	console.log("requesting "+data+" file")
 	ss(io.sockets).emit('file', stream);
 	stream.pipe(fs.createWriteStream('file.csv'));
+	localfile = fs.readFileSync('./file.csv', 'utf-8');
+	fs.writeFileSync("./files/testdata.csv", localfile)
     })
     socket.on("poff", function () {
         console.log("APAGALOOOOOO")
