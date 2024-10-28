@@ -225,7 +225,7 @@ io.on("connection", function (socket) {
     })
 	ss(socket).on('file', function(stream) {
 	console.log("RECIEVING FILE")
-	  fs.createReadStream('./public/files/').pipe(stream);
+	  fs.createReadStream('./public/files/test.csv').pipe(stream);
 	});
     socket.on("poff", function () {
         console.log("APAGALOOOOOO")
