@@ -170,6 +170,9 @@ io.on("connection", function (socket) {
 		    ledstat = ledstatus()
 	    }
     })
+    socket.on("file", function(data){
+	    console.log(data)
+    })
 
     socket.on("storedfiles", function (data) {
 	     io.sockets.emit("startdata", data)
@@ -221,10 +224,7 @@ io.on("connection", function (socket) {
 
     socket.on("download", function (data) {
 	console.log("requesting "+data+" file")
-	ss(io.sockets).emit('file', stream);
-	stream.pipe(text);
-	//localfile = fs.readFileSync('./file.csv', 'utf-8');
-	fs.writeFileSync("./public/files/testdata.csv", text)
+	io.sockets.emit('download', data);
     })
     socket.on("poff", function () {
         console.log("APAGALOOOOOO")
