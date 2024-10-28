@@ -23,6 +23,7 @@ var led1pre = "a"
 var led2pre = "a"
 var led3pre = "a"
 var dataJSON = null;
+var isready = 0
 
 let callCount = 0;
 let values = {
