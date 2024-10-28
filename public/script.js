@@ -310,6 +310,7 @@ function datadownloads() {
 }
 
 socket.on("isready", function (data) {
+    console.log("DOWNLOADING "+ data)
     ddb.href = "/files/" + data
 })
 
