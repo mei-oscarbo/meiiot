@@ -32,6 +32,12 @@ body {
     height: 45px;
 }
 
+.loadinggif {
+    position: relative;
+    height: 20px;
+    display: inline-block;
+}
+
 
 #btn-nav {
     display: none;
