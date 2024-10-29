@@ -7,6 +7,7 @@ const socket = io.connect(dirip, { "forceNew": true })
 
 const datadownload = document.getElementById('datadownload')
 const ddb = document.getElementById('ddb')
+const loadinggif = document.getElementById('loadinggif')
 
 const barra1 = document.getElementById('sensor1')
 const barra2 = document.getElementById('sensor2')
@@ -84,6 +85,8 @@ s[3] = new sensor(0, 0, 0, 0, 0, 0, 0)
 r[1] = new relay(0, 0, 0, 0)
 r[2] = new relay(0, 0, 0, 0)
 r[3] = new relay(0, 0, 0, 0)
+
+loadinggif.style.display = "none"
 
 socket.on("datafunc", function (data) {
     console.log(data)
@@ -307,12 +310,18 @@ function setcolor(ledstat, barralim1, barralim2) {
 
 function datadownloads() {
     socket.emit("download", datadownload.value)
+    loadinggif.style.display = "block"
 }
 
 socket.on("isready", function (data) {
     console.log("DOWNLOADING "+ data)
     window.location.replace("./files/" + data);
     socket.emit("confirmation", 1)
+    loadinggif.style.display = "none"
+})
+
+socket.on("error", function (data) {
+    loadinggif.style.display = "none"
 })
 
 socket.on("updatestatus", function (data) {
