@@ -166,13 +166,13 @@ io.on("connection", function (socket) {
 	if(isready == 1 && confirmed ==0){
 		console.log("SENDING READY MESSAGE")
 		socket.emit("isready", filename)
-		if(confirmed == 1 || trycount >= 5){
-			console.log("ERROR SENDING FILE")
-			trycount = 0
-			isready = 0
-			confirmed = 0
-		}
 		trycount = trycount +1
+	}
+    if(confirmed == 1 || trycount >= 5){
+		console.log("ERROR SENDING FILE")
+		trycount = 0
+		isready = 0
+		confirmed = 0
 	}
     }, 1000)
     socket.on("confirmation", function(data){
