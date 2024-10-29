@@ -311,7 +311,8 @@ function datadownloads() {
 
 socket.on("isready", function (data) {
     console.log("DOWNLOADING "+ data)
-    window.location.replace("./files/" + data); 
+    window.location.replace("./files/" + data);
+    socket.emit("confirmed", 1)
 })
 
 socket.on("updatestatus", function (data) {
