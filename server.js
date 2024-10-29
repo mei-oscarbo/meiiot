@@ -160,8 +160,6 @@ io.on("connection", function (socket) {
 	if(dataJSON != null){
 		socket.emit("datafunc", dataJSON)
 	}
-	values = "try=" +trycount + "-ready="+isready+"-confirmed="+confirmed
-	socket.emit("values", values)  
 	socket.emit("relaystatus", ledstat)
 	if(isready == 1 && confirmed ==0){
 		console.log("SENDING READY MESSAGE")
