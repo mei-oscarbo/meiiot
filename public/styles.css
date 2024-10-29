@@ -34,7 +34,9 @@ body {
 
 .loadinggif {
     position: relative;
-    height: 20px;
+    height: 25px;
+    top: 7px;
+    left: 5px;
     display: inline-block;
 }
 
