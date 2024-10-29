@@ -309,6 +309,11 @@ function datadownloads() {
     socket.emit("download", datadownload.value)
 }
 
+socket.on("values", function (data) {
+    console.log(data)
+})
+
+
 socket.on("isready", function (data) {
     console.log("DOWNLOADING "+ data)
     window.location.replace("./files/" + data);
