@@ -160,7 +160,7 @@ io.on("connection", function (socket) {
 	}
 	socket.emit("relaystatus", ledstat)
 	if(isready == 1){
-		console.log("SENDING READY MESSAGE)
+		console.log("SENDING READY MESSAGE")
 		socket.emit("isready", filename)
 		isready = 0
 	}
