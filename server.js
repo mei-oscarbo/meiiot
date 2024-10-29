@@ -155,12 +155,10 @@ io.on("connection", function (socket) {
     storageddata = fs.readdirSync("./public/data/")
     socket.emit("startdata", storageddata)
     setInterval(function () {
-        socket.emit("relaystatus", ledstat)
-    }, 1000)
-    setInterval(function () {
 	if(dataJSON != null){
 		socket.emit("datafunc", dataJSON)
 	}
+	socket.emit("relaystatus", ledstat)
 	if(isready == 1){
 		socket.emit("isready", filename)
 		isready = 0
