@@ -310,7 +310,7 @@ function setcolor(ledstat, barralim1, barralim2) {
 
 function datadownloads() {
     socket.emit("download", datadownload.value)
-    loadinggif.style.display = "block"
+    loadinggif.style.display = "inline-block"
 }
 
 socket.on("isready", function (data) {
