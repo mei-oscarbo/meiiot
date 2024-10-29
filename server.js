@@ -24,6 +24,7 @@ var led2pre = "a"
 var led3pre = "a"
 var dataJSON = null;
 var isready = 0
+var confirmed = 0
 
 let callCount = 0;
 let values = {
@@ -159,12 +160,18 @@ io.on("connection", function (socket) {
 		socket.emit("datafunc", dataJSON)
 	}
 	socket.emit("relaystatus", ledstat)
-	if(isready == 1){
+	if(isready == 1 && confirmed ==0){
 		console.log("SENDING READY MESSAGE")
 		socket.emit("isready", filename)
-		isready = 0
+		if(confirmed == 1){
+			isready = 0
+			confirmed = 0
+		}
 	}
     }, 1000)
+    socket.on("confirmation", function(data){
+	    confirmed = data
+    })
     socket.on("pidata", function (data) {
 	    if(data != null){
 		    dataJSON = data
