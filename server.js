@@ -162,7 +162,7 @@ io.on("connection", function (socket) {
 		socket.emit("datafunc", dataJSON)
 	}
 	if(isready == 1){
-		socket.emit("isreadytodownload", filename)
+		socket.emit("isready", filename)
 		isready = 0
 	}
     }, 1000)
@@ -178,11 +178,8 @@ io.on("connection", function (socket) {
     socket.on("file", function(data){
 	    fs.writeFileSync("./public/files/"+filename, data)
 	    console.log(filename +" DOWNLOADED")
-    })
-    socket.on("isready", function(data){
 	    isready = 1
     })
-
     socket.on("storedfiles", function (data) {
 	     io.sockets.emit("startdata", data)
     })
