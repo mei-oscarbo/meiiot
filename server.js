@@ -27,6 +27,9 @@ var isready = 0
 var confirmed = 0
 var trycount = 0
 
+var seal_status = "HOLD"
+var inprocess = 0
+
 let callCount = 0;
 let values = {
     sensor1: [],
@@ -178,6 +181,8 @@ io.on("connection", function (socket) {
 		confirmed = 0
 	    	socket.emit("error", "ERROR SENDING FILE")
 	}
+	socket.emit("inprocess", inprocess)
+	socket.emit("seal_status", seal_status)
     }, 1000)
     socket.on("confirmation", function(data){
 	    confirmed = data
@@ -185,10 +190,20 @@ io.on("connection", function (socket) {
     socket.on("pidata", function (data) {
 	    if(data != null){
 		    dataJSON = data
-	    	    s[1].value = dataJSON.sensor1
+	    	s[1].value = dataJSON.sensor1
 		    s[2].value = dataJSON.sensor2
 		    s[3].value = dataJSON.sensor3
 		    ledstat = ledstatus()
+	    }
+    })
+	socket.on("inprocess", function (data) {
+	    if(data != null){
+		    inprocess = data
+	    }
+    })
+	socket.on("seal_status", function (data) {
+	    if(data != null){
+		    seal_status = data
 	    }
     })
     socket.on("file", function(data){
