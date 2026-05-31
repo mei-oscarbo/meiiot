@@ -3,10 +3,13 @@
 <html lang="es" xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="utf-8" />
-    <title>MEI IOT</title>
+    <title>MEI IOT+</title>
     <link href="styles.css" rel="stylesheet">
+    <link href="styles_properties.css" rel="stylesheet">
+    <link href="styles_mobile.css" rel="stylesheet">
+    <link href="styles_blocks.css" rel="stylesheet">
     <script src="/socket.io/socket.io.js"></script>
-    <script defer src="script.js" type="text/javascript"></script>
+    <script defer src="script_iotp.js?v=1" type="text/javascript"></script>
     <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
 </head>
@@ -21,56 +24,42 @@
         <input type="checkbox" id="btn-nav">
         <nav>
             <ul class="navigation">
-                <li><a href="index.html">Home</a></li>
+                <li><a href="index.html">Mei IOT+</a></li>
+                <li><a href="iot.html">Mei IOT</a></li>
                 <li><a href="sensor1.html"><div id="nav1">Sensor 1</div></a></li>
                 <li><a href="sensor2.html"><div id="nav2">Sensor 2</div></a></li>
                 <li><a href="sensor3.html"><div id="nav3">Sensor 3</div></a></li>
-                <li><a href="configuracion.html" id="config">Configuración</a></li>
+                <li><a href="#" id="config">Configuración</a></li>
             </ul>
         </nav>
 
     </header>
-    <div class="row">
-        <div class="column">
-            <div style="padding-bottom: 10px; font-size: 20px" id="text1">Sensor 1</div>
-            <div class="barborder">
-                <div class="bar" id="sensor1"></div>
-                <div class="barlim" id="barlim11"></div>
-                <div class="barlim" id="barlim12"></div>
-            </div>
-            <div class="mvalue" id="sensor1value"></div>
-            <div class="dvalue" id="sensor1maxvalue"></div>
-            <div class="dvalue" id="sensor1minvalue"></div>
+    <div class="center fw gap20" style="margin-top: 150px">
+        <div class="left-right gap20 w40">
+            <div>Estado</div>
+            <div class="border1 radius fill center" id="status" style="padding: 12px">Espera</div>
         </div>
-        <div class="column">
-            <div style="padding-bottom: 10px; font-size: 20px" id="text2">Sensor 2</div>
-            <div class="barborder">
-                <div class="bar" id="sensor2"></div>
-                <div class="barlim" id="barlim21"></div>
-                <div class="barlim" id="barlim22"></div>
-            </div>
-            <div class="mvalue" id="sensor2value"></div>
-            <div class="dvalue" id="sensor2maxvalue"></div>
-            <div class="dvalue" id="sensor2minvalue"></div>
+        <div class="fw">
+            <img class="fw" id="status_image" src="./images/landscape.png">
         </div>
-        <div class="column">
-            <div style="padding-bottom: 10px; font-size: 20px" id="text3">Sensor 3</div>
-            <div class="barborder">
-                <div class="bar" id="sensor3"></div>
-                <div class="barlim" id="barlim31"></div>
-                <div class="barlim" id="barlim32"></div>
-            </div>
-            <div class="mvalue" id="sensor3value"></div>
-            <div class="dvalue" id="sensor3maxvalue"></div>
-            <div class="dvalue" id="sensor3minvalue"></div>
+        <div class="w80 border2 center radius shadow" id="start" style="padding: 12px">
+            Arranque remoto
         </div>
-        <div class="column" type="wide" style="padding:0px">
-            Datos:
-            <select name="datos" type="select" id="datadownload" style="width: 175px;">
-            </select>
-            <a class="download" onclick="datadownloads()" id="ddb" href="#">Descargar</a>
-            <img class="loadinggif" id="loadinggif" src="images/css-loader.gif" alt="Waiting server">
+        <div class="left-right-left gap10 left" style="margin: 50px">
+            <div>
+                Presión: 
+            </div>
+            <div id="preading_p">
+            </div>
+        </div>
+        <div class="left-right-left gap10 left" style="margin: 0px 50px">
+            <div>
+                Temperatura: 
+            </div>
+            <div id="preading_t">
+            </div>
         </div>
     </div>
+   
 </body>
 </html>

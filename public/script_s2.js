@@ -104,6 +104,7 @@ const myChart = new Chart(ctx, {
         }]
     },
     options: {
+        responsive: false,
         scales: {
             x: {
                 type: 'time',
@@ -210,12 +211,18 @@ function startunit() {
     if (s[2].max == 100) {
         form.value = "100";
     }
+    if (s[2].max == 1000) {
+        form.value = "1000";
+    }
     if (s[2].max == 2060) {
         form.value = "2060";
     }
 
     if (s[2].unit == "bar") {
         unit1.value = "bar";
+    }
+    if (s[2].unit == "mbar") {
+        unit1.value = "mbar";
     }
     if (s[2].unit == "grausc") {
         unit1.value = "grausc";
@@ -254,7 +261,26 @@ function move(datasensor, barra, value, maxvalue, minvalue, max, unit, nosens) {
 
     height = 100 / (s[nosens].top - s[nosens].bot) * (datasensor - s[nosens].bot)
     bottom = -401 + height * 4
-    rval = (Math.round(valorreal * 100) / 100).toFixed(decimals)
+    rval = datasensor-(Math.floor(datasensor/ 100)*100)
+
+    if(Math.floor(datasensor/ 100) == 8){
+        rval = rval + 1000
+    }
+    if(Math.floor(datasensor/ 100) == 7){
+        rval = 100+rval*(900/100)
+    }
+    if(Math.floor(datasensor/ 100) == 6){
+        rval = (10+rval*(90/100)).toFixed(1)
+    }
+    if(Math.floor(datasensor/ 100) == 5){
+        rval = (1+rval/100*9).toFixed(2)
+    }
+    if(Math.floor(datasensor/ 100) == 4){
+        rval = (0,1+rval/100*9).toFixed(2) + "e-1"
+    }
+    if(Math.floor(datasensor/ 100) == 3){
+        rval = (0,1+rval/100*9).toFixed(2) + "e-2"
+    }
 
     if (valorreal >= valormin * 1 - (valormaxi - valormin) * 0.02 && (valorreal < (valormaxi * 1 + (valormaxi - valormin) * 0.02))) {
         barra.style.setProperty("background-color", "#284193")
@@ -520,6 +546,13 @@ function unitsel() {
         unitat2.textContent = "bar";
         textunitat3.textContent = "Presi" + ot + "n";
         unitat3.textContent = "bar";
+        myChart.options.scales.y.title.text = "Presion"
+    }else if (s[2].unit == "mbar") {
+        textunitat.textContent = "presi" + ot + "n:";
+        textunitat2.textContent = "Presi" + ot + "n";
+        unitat2.textContent = "mbar";
+        textunitat3.textContent = "Presi" + ot + "n";
+        unitat3.textContent = "mbar";
         myChart.options.scales.y.title.text = "Presion"
     }
     else if (s[2].unit == "mh2o") {

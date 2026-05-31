@@ -1,0 +1,325 @@
+.border1{
+  border: solid;
+  border-width: 1px;
+}
+
+.border2{
+  border: solid;
+  border-width: 2px;
+}
+
+.borderless{
+  border:none;
+}
+
+.bold{
+  font-weight: 700;
+}
+
+.defaultfont{
+  font-family: "Montserrat", sans-serif;
+}
+
+.radius{
+  border-radius: .5rem;
+}
+
+.smallradius{
+  border-radius: 5px;
+}
+
+.red{
+  color: var(--clr-lupo-red);
+}
+
+.lightgrey{
+  color: var(--clr-light-grey)
+}
+
+.grey{
+  color: grey
+}
+
+.lightgreybg{
+  background-color: var(--clr-light-grey)
+}
+
+.bordergrey{
+  border: solid;
+  border-color: var(--clr-light-grey);
+  border-width: 1px;}
+
+.white{
+  color: white;
+}
+
+.black{
+  color: black;
+}
+
+.dbg{
+  background-color: var(--clr-lupo-dark);
+}
+
+.blue{
+  background-color: rgba(29, 78, 216, 0.15);
+  color: rgb(29, 78, 216, 1);
+}
+
+.redbg{
+  background-color: var(--clr-lupo-red);
+}
+
+.lupobg{
+  background-color: var(--clr-lupo);
+}
+
+.lupolightbg{
+  background-color: var(--clr-lupo-light);
+}
+
+.whitebg{
+  background-color: var(--clr-light);
+}
+
+.bghover:hover{
+  background-color: var(--clr-lupo-dark);
+}
+
+.pop{
+    transition: 0.2s;
+}
+
+.pop:hover{
+  transform: scale(1.1);
+}
+
+.rise{
+    transition: 0.2s;
+}
+
+.rise:hover{
+  transform: translateY(-10px);
+  box-shadow: 0 12px 30px rgba(184, 31, 34, 0.2); /* Adjust values as needed */
+}
+
+.rhover:hover{
+  color: white;
+  background-color: var(--clr-lupo-red);
+}
+
+.drhover:hover{
+  color: white;
+  background-color: var(--clr-lupo-dred);
+}
+
+.fill-form{
+  border-radius: 30px;
+  border: solid;
+  border-width: 1px;
+  height: 60px;
+}
+
+.pointer:hover{
+  cursor: pointer;
+}
+
+.notallowed:hover{
+  cursor: not-allowed;
+}
+
+.testing{
+  border: solid 2px;
+}
+
+.fw{
+  width: 99.9%;
+}
+
+.fh{
+  height: 99.9%;
+}
+
+.fill{
+  flex-grow: 1;
+}
+
+.nowrap{
+  flex-wrap: nowrap;
+  flex-shrink: 0;
+}
+
+.left{
+  align-self: flex-start;
+  text-align: left;
+}
+
+.right{
+  align-self: flex-end;
+}
+
+.centered{
+  align-self: center;
+  justify-self: center;
+}
+
+.gap50{
+  gap:50px;
+}
+
+.gap20{
+  gap:20px;
+}
+
+.gap10{
+  gap: 10px;
+}
+
+.top20{
+  margin-top: 20px;
+}
+
+.bot20{
+  margin-bottom: 20px;
+}
+
+
+.lrpad5{
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+.lrpad10{
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.lrpad20{
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+.px16{
+  font-size: 16px;
+}
+
+.shadow{
+  box-shadow: 0 12px 30px rgba(0,0,0,0.1);
+}
+
+.blacktowhite{
+  filter: brightness(100) saturate(100%) invert(100%) sepia(0%) saturate(1%)
+            hue-rotate(149deg) brightness(103%) contrast(101%);
+}
+
+.blacktowhite:hover{
+  filter: brightness(0) saturate(100%) invert(100%) sepia(0%) saturate(1%)
+            hue-rotate(149deg) brightness(103%) contrast(101%);
+}
+
+.blacktowhiteparent img{
+  filter: brightness(100) saturate(100%) invert(100%) sepia(0%) saturate(1%)
+            hue-rotate(149deg) brightness(103%) contrast(101%);
+}
+
+.blacktowhiteparent:hover img{
+  filter: brightness(0) saturate(100%) invert(100%) sepia(0%) saturate(1%)
+            hue-rotate(149deg) brightness(103%) contrast(101%);
+}
+
+.defaulttowhiteparent:hover img{
+  filter: brightness(0) saturate(100%) invert(100%) sepia(0%) saturate(1%)
+            hue-rotate(149deg) brightness(103%) contrast(101%);
+}
+
+.blacktowhiteparent svg{
+  filter: brightness(100) saturate(100%) invert(100%) sepia(0%) saturate(1%)
+            hue-rotate(149deg) brightness(103%) contrast(101%);
+}
+
+.blacktowhiteparent:hover svg{
+  filter: brightness(0) saturate(100%) invert(100%) sepia(0%) saturate(1%)
+            hue-rotate(149deg) brightness(103%) contrast(101%);
+}
+
+.defaulttowhiteparent:hover svg{
+  filter: brightness(0) saturate(100%) invert(100%) sepia(0%) saturate(1%)
+            hue-rotate(149deg) brightness(103%) contrast(101%);
+}
+
+@media(max-width: 600px) {
+.mobilefw{
+  width: 80%;
+}}
+
+.w40{
+  width: 40%;
+}
+
+.w50{
+  width: 50%;
+}
+
+.w60{
+  width: 60%;
+}
+
+.w70{
+  width: 70%;
+}
+
+.w80{
+  width: 80%;
+}
+
+.w90{
+  width: 90%;
+}
+
+.w90p{
+  width: 80%;
+  padding-left: 5%;
+  padding-right: 5%;
+}
+
+.w90pselect{
+  width: 90%;
+  padding-left: 5%;
+}
+
+.fwp{
+  width: 90%;
+  padding: 5%;
+}
+
+.lrscroll{
+  overflow-x: auto;
+  scrollbar-width: none;
+  flex-wrap: nowrap;
+  flex-shrink: 0;
+}
+
+.selectdisable {
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -o-user-select: none;
+  user-select: none;
+}
+
+.disabled:hover{
+  cursor: not-allowed;
+}
+
+.disabled{
+  opacity: .6;
+}
+
+.greyhover:hover{
+  background-color: lightgrey;
+}
+
+.borderredhover:hover{
+  border-color: var(--clr-lupo-red);
+  box-shadow: 0 0 0 1px var(--clr-lupo-red);
+}

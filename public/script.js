@@ -7,7 +7,6 @@ const socket = io.connect(dirip, { "forceNew": true })
 
 const datadownload = document.getElementById('datadownload')
 const ddb = document.getElementById('ddb')
-const loadinggif = document.getElementById('loadinggif')
 
 const barra1 = document.getElementById('sensor1')
 const barra2 = document.getElementById('sensor2')
@@ -86,10 +85,7 @@ r[1] = new relay(0, 0, 0, 0)
 r[2] = new relay(0, 0, 0, 0)
 r[3] = new relay(0, 0, 0, 0)
 
-loadinggif.style.display = "none"
-
 socket.on("datafunc", function (data) {
-    console.log(data)
     shutdown = false
     dataJSON = data
     s[1].value = dataJSON.sensor1
@@ -196,8 +192,31 @@ function move(datasensor, barra, value, maxvalue, minvalue, max, unit, nosens) {
 
     if (unit == "grausc") { unit = gr + "C" }
 
-    height = 100 / (s[nosens].top - s[nosens].bot) * (datasensor - s[nosens].bot)
-    bottom = -401 + height * 4
+        height = 100 / (s[nosens].top - s[nosens].bot) * (datasensor - s[nosens].bot)
+        bottom = -401 + height * 4
+
+        if(nosens == 2){
+            rval = datasensor-(Math.floor(datasensor/ 100)*100)
+
+        if(Math.floor(datasensor/ 100) == 8){
+            rval = rval + 1000
+        }
+        if(Math.floor(datasensor/ 100) == 7){
+            rval = 100+rval*(900/100)
+        }
+        if(Math.floor(datasensor/ 100) == 6){
+            rval = (10+rval*(90/100)).toFixed(1)
+        }
+        if(Math.floor(datasensor/ 100) == 5){
+            rval = (1+rval/100*9).toFixed(2)
+        }
+        if(Math.floor(datasensor/ 100) == 4){
+            rval = (0,1+rval/100*9).toFixed(2) + "e-1"
+        }
+        if(Math.floor(datasensor/ 100) == 3){
+            rval = (0,1+rval/100*9).toFixed(2) + "e-2"
+        }
+    }
     if (valorreal >= valormin * 1 - (valormaxi - valormin) * 0.02 && (valorreal < (valormaxi * 1 + (valormaxi - valormin) * 0.02))) {
         barra.style.setProperty("background-color", "#284193")
         value.textContent = rval + " " + unit;
@@ -310,19 +329,8 @@ function setcolor(ledstat, barralim1, barralim2) {
 
 function datadownloads() {
     socket.emit("download", datadownload.value)
-    loadinggif.style.display = "inline-block"
+    ddb.href = "/files/" + datadownload.value
 }
-
-socket.on("isready", function (data) {
-    console.log("DOWNLOADING "+ data)
-    window.location.replace("./files/" + data);
-    socket.emit("confirmation", 1)
-    loadinggif.style.display = "none"
-})
-
-socket.on("error", function (data) {
-    loadinggif.style.display = "none"
-})
 
 socket.on("updatestatus", function (data) {
     const ot = "\u00F3"

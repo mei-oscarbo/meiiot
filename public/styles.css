@@ -32,14 +32,6 @@ body {
     height: 45px;
 }
 
-.loadinggif {
-    position: relative;
-    height: 25px;
-    top: 7px;
-    left: 5px;
-    display: inline-block;
-}
-
 
 #btn-nav {
     display: none;
@@ -72,7 +64,7 @@ body {
 
 .row {
     padding: 60px;
-    margin-left: 90px;
+    margin-left: 80px;
 }
 
 .row:after {
@@ -285,3 +277,54 @@ nav {
     .navigation a:hover {
         transform: translateX(10%);
     }
+
+.center{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly; 
+}
+
+.centered_text{
+    text-align: center;
+}
+
+.left-right{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+}
+
+.left-right-ends{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.right-left{
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+}
+
+.left-right-left{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+}
+
+.top-bot-left{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+}
