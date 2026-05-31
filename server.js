@@ -199,6 +199,9 @@ io.on("connection", function (socket) {
     socket.on("storedfiles", function (data) {
 	     io.sockets.emit("startdata", data)
     })
+	socket.on("start", function () {
+	     io.sockets.emit("start", "start")
+    })
     socket.on("clientmessage", function (data) {
 	    console.log(data)
         io.sockets.emit("client", data)
